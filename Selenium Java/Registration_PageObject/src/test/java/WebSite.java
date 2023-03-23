@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebSite {
     WebDriver driver;
+    DataElemets data = new DataElemets();
     @BeforeAll
     static void setupAll() {
         WebDriverManager.firefoxdriver().setup();
@@ -27,14 +28,14 @@ public class WebSite {
 
     @Test
     void hobbygamesRegistration() throws InterruptedException {
-        driver.get("https://hobbygames.ru/");
-        driver.findElement(By.xpath("//div[@class='enter']//a[@class='footer-btn js-openRegisterModal']")).click();
-        driver.findElement(By.xpath("//form[@id='register-form']//input[@name='fio']")).sendKeys("Jons Week");
-        driver.findElement(By.xpath("//label[@data-scenario='phone']//input[@name='phone']")).sendKeys("9163332212");
-        driver.findElement(By.xpath("//form[@id='register-form']//input[@name='email']")).sendKeys("emailtest12@gmai.com");
-        driver.findElement(By.xpath("//div[@class='register_popup__subscription']//label[@for='newsletter']")).click();
-        driver.findElement(By.xpath("//div[@class='register_popup__subscription']//label[@for='sms']")).click();
-        driver.findElement(By.xpath("//div[@class='btn-block']//a[@class='send-register btn right']")).click();
+        driver.get(data.UrlHobbyGame);
+        driver.findElement(data.btnRegisterHobby).click();
+        driver.findElement(data.nameHobby).sendKeys("Jons Week");
+        driver.findElement(data.phoneHobby).sendKeys("9163332212");
+        driver.findElement(data.emailHobby).sendKeys("emailtest12@gmai.com");
+        driver.findElement(data.btnCheck1Hobby).click();
+        driver.findElement(data.BtnCheck2Hobby).click();
+        driver.findElement(data.btnRegisterHobby).click();
     }
     @Test
     void officemagRegistration() throws InterruptedException {
